@@ -1,0 +1,26 @@
+services:
+  vinf-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vinf-pipeline
+    volumes:
+      - ../../scraper_data:/app/data/scraper_data:ro
+      - ../../wiki:/app/wiki:ro
+      - ./spark_data:/app/spark_data:rw
+      # Mount Python files for development (no rebuild needed on changes)
+      - ./main.py:/app/main.py:ro
+      - ./wiki_pipeline.py:/app/wiki_pipeline.py:ro
+      - ./extract_html_properties.py:/app/extract_html_properties.py:ro
+    environment:
+      - PYSPARK_PYTHON=/usr/local/bin/python
+      - PYSPARK_DRIVER_PYTHON=/usr/local/bin/python
+      - SPARK_DRIVER_MEMORY=8g
+      - SPARK_EXECUTOR_MEMORY=12g
+      - SPARK_EXECUTOR_CORES=8
+    mem_limit: 20g
+    cpus: "10"
+    # Run full wiki mapping pipeline with property extraction
+    command: ["python", "main.py", "wiki", "--parsed-data", "spark_data/parsed/parsed.parquet", "--wiki-index", "wiki/enwiki-20251020-pages-articles-multistream-index.txt.bz2", "--wiki-dump", "wiki/enwiki-20251020-pages-articles-multistream.xml.bz2", "--output-dir", "spark_data", "--partitions", "20"]
+    restart: "no"
+    working_dir: /app

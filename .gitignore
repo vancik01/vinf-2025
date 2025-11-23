@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.egg-info/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Data directories - ANYWHERE in the project
+data/
+spark_data/
+wiki_data/
+wiki/
+logs/
+pages/
+scraper_data/
+
+# Large file types
+*.parquet
+*.xml.bz2
+*.txt.bz2
+*.jsonl
+*.xml
+*.log

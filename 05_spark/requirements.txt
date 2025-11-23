@@ -1,0 +1,2 @@
+pyspark==3.5.3
+markitdown==0.0.1a5
