@@ -1,3 +1,4 @@
 requests>=2.31.0
 markitdown>=0.0.1a2
 tiktoken>=0.5.0
+PyLucene>=9.0.0

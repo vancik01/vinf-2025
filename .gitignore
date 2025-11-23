@@ -34,3 +34,6 @@ scraper_data/
 *.jsonl
 *.xml
 *.log
+
+# PyLucene
+pylucene-9.12.0/
