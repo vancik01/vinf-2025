@@ -37,3 +37,5 @@ scraper_data/
 
 # PyLucene
 pylucene-9.12.0/
+06_pylucene/index/
+06_pylucene/*.json
