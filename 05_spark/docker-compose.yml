@@ -5,8 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: vinf-pipeline
     volumes:
-      - ../../scraper_data:/app/data/scraper_data:ro
-      - ../../wiki:/app/wiki:ro
+      - ../data/scraper_data/pages:/app/data/scraper_data/pages:ro
+      - ../wiki:/app/wiki:ro
       - ./spark_data:/app/spark_data:rw
       # Mount Python files for development (no rebuild needed on changes)
       - ./main.py:/app/main.py:ro
